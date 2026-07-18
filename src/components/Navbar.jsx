@@ -50,6 +50,7 @@ const Navbar = () => {
               </li>
             ))}
             <li>
+              <a href="https://vedanurseapp.pythonanywhere.com/" target="_blank" rel="noopener noreferrer" className="btn btn-outline" style={{ padding: '0.5rem 1.25rem' }}>VEDA Nurse Companion</a>
               <a href="#download" className="btn btn-primary" style={{ padding: '0.5rem 1.25rem' }}>Get VEDA</a>
             </li>
           </ul>

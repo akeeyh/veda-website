@@ -7,7 +7,7 @@ const Overview = () => {
     {
       icon: <Camera size={32} />,
       title: "Standard Hardware",
-      description: "Uses a standard webcam, eliminating the need for $10,000+ specialized trackers."
+      description: "Uses a standard webcam, eliminating the need for ₹8,00,000+ specialized trackers."
     },
     {
       icon: <Activity size={32} />,

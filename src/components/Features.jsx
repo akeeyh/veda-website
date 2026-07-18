@@ -32,7 +32,7 @@ const Features = () => {
     {
       icon: <DollarSign size={24} />,
       title: "Affordable & Accessible",
-      description: "Total hardware cost is ~$100. No proprietary or specialized equipment is required to run the system."
+      description: "Total hardware cost is ~₹10,000. No proprietary or specialized equipment is required to run the system."
     }
   ];
 

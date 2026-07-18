@@ -1,21 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import InteractiveDemo from './components/InteractiveDemo';
 
 function App() {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [showPlatforms, setShowPlatforms] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [activeFaq, setActiveFaq] = useState(null);
-  const [simMode, setSimMode] = useState('dwell');
-  const [simLogs, setSimLogs] = useState([{ type: 'sys', msg: 'System initialized. Gaze tracker is ready.' }]);
-
-  const handleSimClick = (label) => {
-    setSimLogs(prev => [...prev, { type: 'action', msg: `Selected: ${label}` }]);
-    // Keep max 5 logs
-    if (simLogs.length > 4) {
-      setSimLogs(prev => prev.slice(prev.length - 4));
-    }
-  };
 
   // Toggle Dark Mode
   useEffect(() => {
@@ -76,7 +67,6 @@ function App() {
               <li><a href="#download" className="nav-link" onClick={() => setIsNavOpen(false)}>Download</a></li>
               <li><a href="#why-veda" className="nav-link" onClick={() => setIsNavOpen(false)}>Why VEDA</a></li>
               <li><a href="#team" className="nav-link" onClick={() => setIsNavOpen(false)}>Team</a></li>
-              <li><a href="#faq" className="nav-link" onClick={() => setIsNavOpen(false)}>FAQ</a></li>
             </ul>
           </nav>
 
@@ -91,6 +81,7 @@ function App() {
             >
               <i className={isDarkMode ? "fa-solid fa-sun" : "fa-solid fa-moon"}></i>
             </button>
+            <a href="https://vedanurseapp.pythonanywhere.com/" target="_blank" rel="noopener noreferrer" className="btn btn-sm btn-outline nav-cta-btn">VEDA Nurse Companion</a>
             <a href="#download" className="btn btn-sm btn-gradient nav-cta-btn">Get VEDA</a>
             <button 
               className={`mobile-nav-toggle ${isNavOpen ? 'active' : ''}`} 
@@ -125,8 +116,8 @@ function App() {
 
               <motion.div variants={fadeUp} className="hero-features-strip animate-up">
                 <div className="strip-item"><i className="fa-solid fa-circle-check"></i> Standard Webcams</div>
-                <div className="strip-item"><i className="fa-solid fa-circle-check"></i> Under $100 Hardware</div>
-                <div className="strip-item"><i className="fa-solid fa-circle-check"></i> No Internet Required</div>
+                <div className="strip-item"><i className="fa-solid fa-circle-check"></i> Under ₹10,000 Hardware</div>
+                <div className="strip-item"><i className="fa-solid fa-circle-check"></i> Real-time Alerts via Internet</div>
               </motion.div>
             </motion.div>
 
@@ -152,8 +143,8 @@ function App() {
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="overview-grid">
               <motion.div variants={fadeUp} className="overview-main-text card">
                 <h3>Bridging the Gap in Assistive Technology</h3>
-                <p>Traditional eye-tracking solutions are incredibly powerful but carry an exorbitant price tag, often costing between <strong>$10,000 and $15,000</strong>. This places them far out of reach for families and medical centers in developing regions.</p>
-                <p><strong>VEDA</strong> breaks down these barriers. By combining standard consumer webcams with compact edge devices like the Raspberry Pi or ESP32, and leveraging state-of-the-art computer vision models, VEDA delivers robust eye-tracking control at a hardware cost of <strong>under $100</strong>.</p>
+                <p>Traditional eye-tracking solutions are incredibly powerful but carry an exorbitant price tag, often costing between <strong>₹8,00,000 and ₹12,00,000</strong>. This places them far out of reach for families and medical centers in developing regions.</p>
+                <p><strong>VEDA</strong> breaks down these barriers. By combining standard consumer webcams with compact edge devices like the Raspberry Pi or ESP32, and leveraging state-of-the-art computer vision models, VEDA delivers robust eye-tracking control at a hardware cost of <strong>under ₹10,000</strong>.</p>
                 <p>Our software continuously monitors facial movements, tracking 468 precise landmarks to calculate gaze coordinates, blink patterns, and prolonged eye-closures. It acts as both a communication board and a smart controller for home appliances.</p>
                 
                 <div className="tech-badge-container">
@@ -168,8 +159,8 @@ function App() {
               <motion.div variants={fadeUp} className="stats-container">
                 <div className="stat-card">
                   <div className="stat-icon"><i className="fa-solid fa-tags"></i></div>
-                  <div className="stat-num">~$100</div>
-                  <div className="stat-label">Hardware cost compared to $10,000+ commercial options</div>
+                  <div className="stat-num">~₹10,000</div>
+                  <div className="stat-label">Hardware cost compared to ₹8,00,000+ commercial options</div>
                 </div>
                 <div className="stat-card">
                   <div className="stat-icon"><i className="fa-solid fa-bezier-curve"></i></div>
@@ -228,80 +219,7 @@ function App() {
         </section>
 
         {/* Section: Simulator */}
-        <section id="simulator" className="simulator-section section-padding">
-          <div className="container">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="section-header text-center">
-              <span className="section-tag">Interactive Preview</span>
-              <h2 className="section-title">Experience VEDA Virtual Interface</h2>
-              <p className="section-subtitle">See how VEDA works. Move your cursor over the buttons below to simulate eye gaze.</p>
-            </motion.div>
-
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="simulator-wrapper card">
-              <div className="simulator-controls">
-                <div className="control-group">
-                  <span className="control-label"><i className="fa-solid fa-cog"></i> Input Mode:</span>
-                  <button className={`btn btn-sm ${simMode === 'dwell' ? 'btn-active' : 'btn-outline'}`} onClick={() => setSimMode('dwell')}><i className="fa-solid fa-eye"></i> Dwell (Hover)</button>
-                  <button className={`btn btn-sm ${simMode === 'click' ? 'btn-active' : 'btn-outline'}`} onClick={() => setSimMode('click')}><i className="fa-solid fa-hand-pointer"></i> Click (Blink)</button>
-                </div>
-                <div className="control-group status-group">
-                  <span className="system-status"><span className="status-dot"></span> System Calibrated &amp; Active</span>
-                </div>
-              </div>
-
-              <div className="simulator-main">
-                <div className="grid-board" id="simulator-grid">
-                  <div className="grid-cell" onClick={() => handleSimClick('Water')}>
-                    <div className="cell-icon"><i className="fa-solid fa-glass-water"></i></div>
-                    <span className="cell-label">Water</span>
-                  </div>
-                  <div className="grid-cell" onClick={() => handleSimClick('Food')}>
-                    <div className="cell-icon"><i className="fa-solid fa-bowl-food"></i></div>
-                    <span className="cell-label">Food</span>
-                  </div>
-                  <div className="grid-cell" onClick={() => handleSimClick('Doctor')}>
-                    <div className="cell-icon"><i className="fa-solid fa-user-doctor"></i></div>
-                    <span className="cell-label">Doctor</span>
-                  </div>
-                  <div className="grid-cell iot-cell" onClick={() => handleSimClick('Light Toggle')}>
-                    <div className="cell-icon"><i className="fa-solid fa-lightbulb"></i></div>
-                    <span className="cell-label">Light: OFF</span>
-                  </div>
-                  <div className="grid-cell iot-cell" onClick={() => handleSimClick('Fan Toggle')}>
-                    <div className="cell-icon"><i className="fa-solid fa-fan"></i></div>
-                    <span className="cell-label">Fan: OFF</span>
-                  </div>
-                  <div className="grid-cell iot-cell" onClick={() => handleSimClick('Call Family')}>
-                    <div className="cell-icon"><i className="fa-solid fa-phone"></i></div>
-                    <span className="cell-label">Call Family</span>
-                  </div>
-                  <div className="grid-cell mode-cell" onClick={() => handleSimClick('Sleep Mode')}>
-                    <div className="cell-icon"><i className="fa-solid fa-bed"></i></div>
-                    <span className="cell-label">Sleep Mode</span>
-                  </div>
-                  <div className="grid-cell mode-cell" onClick={() => handleSimClick('Menu')}>
-                    <div className="cell-icon"><i className="fa-solid fa-gears"></i></div>
-                    <span className="cell-label">Menu</span>
-                  </div>
-                  <div className="grid-cell danger-cell" onClick={() => handleSimClick('EMERGENCY')}>
-                    <div className="cell-icon"><i className="fa-solid fa-triangle-exclamation"></i></div>
-                    <span className="cell-label">EMERGENCY</span>
-                  </div>
-                </div>
-
-                <div className="simulator-log">
-                  <div className="log-title"><i className="fa-solid fa-terminal"></i> VEDA System Log</div>
-                  <div className="log-messages" id="sim-log-messages">
-                    {simLogs.map((log, index) => (
-                      <div key={index} className="log-msg" style={{color: log.type === 'sys' ? 'var(--success)' : '#F59E0B'}}>
-                        {log.msg}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </section>
+        <InteractiveDemo />
 
         {/* Section 4: Features */}
         <section id="features" className="features-section section-padding">
@@ -345,7 +263,7 @@ function App() {
                 <button id="btn-reveal-platforms" className="btn btn-xl btn-gradient" onClick={() => setShowPlatforms(true)}>
                   <i className="fa-solid fa-download"></i> Download VEDA Installer
                 </button>
-                <p className="download-meta" style={{marginTop: '1rem', color: 'var(--text-light)'}}>Available for Windows, Linux, and macOS. Size: ~85MB</p>
+                <p className="download-meta" style={{marginTop: '1rem', color: 'var(--text-light)'}}>Available for Windows, Linux, and macOS.</p>
               </motion.div>
             ) : (
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} id="platform-grid-container" className="platform-grid-wrapper">
@@ -355,7 +273,7 @@ function App() {
                     <h3>Windows</h3>
                     <p className="plat-compat">Windows 10 / 11 (64-bit)</p>
                     <p className="plat-desc">Includes the core installer and dependencies compiled for Windows x64 systems.</p>
-                    <a href="https://drive.google.com/uc?export=download&id=1IyzoG_u88WgyB1kK0G-icPMsp1Yao46Y" className="btn btn-md btn-gradient download-link" target="_blank" rel="noopener noreferrer">
+                    <a href="https://drive.google.com/uc?export=download&id=1j0ypYkoJGunVdshqnhpc0N3l4o1bDVqE" className="btn btn-md btn-gradient download-link" target="_blank" rel="noopener noreferrer">
                       Download Installer <i className="fa-solid fa-arrow-down"></i>
                     </a>
                   </div>
@@ -410,8 +328,8 @@ function App() {
                 <tbody>
                   <tr>
                     <td className="feat-name">Hardware Cost</td>
-                    <td className="veda-val"><i className="fa-solid fa-check-double text-success"></i> ~$100 (Webcam + Pi/ESP32)</td>
-                    <td className="other-val">$10,000 – $15,000</td>
+                    <td className="veda-val"><i className="fa-solid fa-check-double text-success"></i> ~₹10,000 (Webcam + Pi/ESP32)</td>
+                    <td className="other-val">₹8,00,000 – ₹12,00,000</td>
                   </tr>
                   <tr>
                     <td className="feat-name">Specialized Hardware</td>
@@ -541,6 +459,17 @@ function App() {
 
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="team-grid">
               <motion.div variants={fadeUp} className="team-card card">
+                <div className="team-avatar"><i className="fa-solid fa-people-group"></i></div>
+                <h3>Ananthajith KS</h3>
+                <p className="team-role">Team Lead<br />AI &amp; IOT Engineer</p>
+                <p className="team-desc">Oversees the entire project architecture, integrating AI gaze tracking with the IoT ecosystem.</p>
+                <div className="team-socials">
+                  <a href="#"><i className="fa-brands fa-linkedin"></i></a>
+                  <a href="#"><i className="fa-brands fa-github"></i></a>
+                </div>
+              </motion.div>
+
+              <motion.div variants={fadeUp} className="team-card card">
                 <div className="team-avatar"><i className="fa-solid fa-user-gear"></i></div>
                 <h3>Abhinav EG</h3>
                 <p className="team-role">AI &amp; Computer Vision Engineer</p>
@@ -554,8 +483,8 @@ function App() {
               <motion.div variants={fadeUp} className="team-card card">
                 <div className="team-avatar"><i className="fa-solid fa-microchip"></i></div>
                 <h3>Abijith TS</h3>
-                <p className="team-role">Embedded Systems &amp; IoT Lead</p>
-                <p className="team-desc">Manages Raspberry Pi and ESP32 communications, relays control, and hardware design.</p>
+                <p className="team-role">IoT &amp; Embedded Systems Engineer</p>
+                <p className="team-desc">Manages microcontroller communications, relay control, and hardware integration.</p>
                 <div className="team-socials">
                   <a href="#"><i className="fa-brands fa-linkedin"></i></a>
                   <a href="#"><i className="fa-brands fa-github"></i></a>
@@ -564,20 +493,9 @@ function App() {
 
               <motion.div variants={fadeUp} className="team-card card">
                 <div className="team-avatar"><i className="fa-solid fa-laptop-code"></i></div>
-                <h3>Ajidha Dhanpal</h3>
-                <p className="team-role">UX &amp; Frontend Architect</p>
-                <p className="team-desc">Designs simple, accessible visual layouts for low fatigue and maximum visibility.</p>
-                <div className="team-socials">
-                  <a href="#"><i className="fa-brands fa-linkedin"></i></a>
-                  <a href="#"><i className="fa-brands fa-github"></i></a>
-                </div>
-              </motion.div>
-
-              <motion.div variants={fadeUp} className="team-card card">
-                <div className="team-avatar"><i className="fa-solid fa-shield-halved"></i></div>
-                <h3>Ananthajith KS</h3>
-                <p className="team-role">Safety &amp; Systems QA</p>
-                <p className="team-desc">Orchestrates validation, testing, emergency protocols, and log verification.</p>
+                <h3>Ajitha Dhanpal</h3>
+                <p className="team-role">UI/UX &amp; Frontend Developer</p>
+                <p className="team-desc">Designs and implements accessible, user-friendly interfaces tailored for low fatigue and maximum visibility.</p>
                 <div className="team-socials">
                   <a href="#"><i className="fa-brands fa-linkedin"></i></a>
                   <a href="#"><i className="fa-brands fa-github"></i></a>

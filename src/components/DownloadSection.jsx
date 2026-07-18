@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Download, Monitor, Command, Terminal, ChevronDown } from 'lucide-react';
 
-const DOWNLOAD_URL = "https://drive.google.com/uc?export=download&id=1IyzoG_u88WgyB1kK0G-icPMsp1Yao46Y";
+const DOWNLOAD_URL = "https://drive.google.com/uc?export=download&id=1j0ypYkoJGunVdshqnhpc0N3l4o1bDVqE";
 
 const PlatformCard = ({ icon, name, reqs, url }) => {
   return (

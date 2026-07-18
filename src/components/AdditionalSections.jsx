@@ -42,7 +42,7 @@ const AdditionalSections = () => {
                 </thead>
                 <tbody>
                   {[
-                    ['Cost', '$10,000 - $15,000+', '~$100'],
+                    ['Cost', '₹8,00,000 - ₹12,00,000+', '~₹10,000'],
                     ['Hardware Required', 'Specialized IR Cameras', 'Standard Webcam'],
                     ['IoT Integration', 'Often requires expensive add-ons', 'Built-in (Raspberry Pi/ESP32)'],
                     ['Setup Complexity', 'Requires trained technician', 'Plug & Play, Auto-calibrating']
