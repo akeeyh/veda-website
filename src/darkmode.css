@@ -1,0 +1,38 @@
+body.dark {
+  --bg-main: #0F172A;
+  --bg-alt: #1E293B;
+  --bg-card: #1E293B;
+  
+  --text-dark: #F8FAFC;
+  --text-gray: #CBD5E1;
+  --text-light: #94A3B8;
+  
+  --border-color: #334155;
+}
+
+body.dark #site-header {
+  background: rgba(15, 23, 42, 0.9);
+}
+
+body.dark .logo-text, body.dark .nav-link, body.dark h1, body.dark h2, body.dark h3, body.dark h4 {
+  color: var(--text-dark);
+}
+
+body.dark .theme-btn i, body.dark .mobile-nav-toggle i {
+  color: var(--text-dark);
+}
+
+body.dark .timeline-detail .detail-tag, body.dark .tech-badge {
+  background: #334155;
+  color: var(--text-dark);
+}
+
+body.dark .faq-question {
+  color: var(--text-dark);
+}
+
+body.dark .form-group input, body.dark .form-group select, body.dark .form-group textarea {
+  background: #334155;
+  color: var(--text-dark);
+  border-color: #475569;
+}
