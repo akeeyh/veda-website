@@ -273,7 +273,7 @@ function App() {
                     <h3>Windows</h3>
                     <p className="plat-compat">Windows 10 / 11 (64-bit)</p>
                     <p className="plat-desc">Includes the core installer and dependencies compiled for Windows x64 systems.</p>
-                    <a href="https://drive.google.com/uc?export=download&id=1j0ypYkoJGunVdshqnhpc0N3l4o1bDVqE" className="btn btn-md btn-gradient download-link" target="_blank" rel="noopener noreferrer">
+                    <a href="https://drive.google.com/uc?export=download&id=1Fu1CeVrV3jgKMauW5De6_M7xlHnDoPSl" className="btn btn-md btn-gradient download-link" target="_blank" rel="noopener noreferrer">
                       Download Installer <i className="fa-solid fa-arrow-down"></i>
                     </a>
                   </div>
