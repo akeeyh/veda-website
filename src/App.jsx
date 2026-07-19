@@ -67,6 +67,10 @@ function App() {
               <li><a href="#download" className="nav-link" onClick={() => setIsNavOpen(false)}>Download</a></li>
               <li><a href="#why-veda" className="nav-link" onClick={() => setIsNavOpen(false)}>Why VEDA</a></li>
               <li><a href="#team" className="nav-link" onClick={() => setIsNavOpen(false)}>Team</a></li>
+              <li className="mobile-only-cta">
+                <a href="https://vedanurseapp.pythonanywhere.com/" target="_blank" rel="noopener noreferrer" className="btn btn-sm btn-outline" style={{width: '100%', marginBottom: '10px', justifyContent: 'center'}}>VEDA Nurse Companion</a>
+                <a href="#download" className="btn btn-sm btn-gradient" style={{width: '100%', justifyContent: 'center'}}>Get VEDA</a>
+              </li>
             </ul>
           </nav>
 
