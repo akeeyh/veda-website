@@ -85,7 +85,7 @@ function App() {
             >
               <i className={isDarkMode ? "fa-solid fa-sun" : "fa-solid fa-moon"}></i>
             </button>
-            <a href="https://vedanurseapp.pythonanywhere.com/" target="_blank" rel="noopener noreferrer" className="btn btn-sm btn-outline nav-cta-btn">VEDA Nurse Companion</a>
+            <a href="https://veda-mobile-dashboard.onrender.com" target="_blank" rel="noopener noreferrer" className="btn btn-sm btn-outline nav-cta-btn">VEDA Nurse Companion</a>
             <a href="#download" className="btn btn-sm btn-gradient nav-cta-btn">Get VEDA</a>
             <button 
               className={`mobile-nav-toggle ${isNavOpen ? 'active' : ''}`} 
